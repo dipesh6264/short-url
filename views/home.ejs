@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+   
+    <style> body {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f7f7f7;
+        flex-direction: column;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        margin-bottom: 10px;
+        width: 300px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+    a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px;
+    /* border: 2px solid black; */
+    margin: 4px;
+    /* border-radius: 6px; */
+  }
+</style></style>
+</head>
+<body>
+    
+    <h1>URL Shortner</h1>
+    <% if (locals.id) { %>
+       <p>URL Generated: http://localhost:8001/url/<%=id%></p>
+    <% } %>
+   <div><form method="post" action="/url">
+    <label>Enter your Original URL</label>
+    <input type="text" name="url" placeholder="https://example.com"/>
+    <button type="submit">Generate</button>
+   </form>
+</div>
+
+<div>
+    <% if (locals.urls) { %>
+     <table>
+        <thead>
+            <th>S.No</th>
+            <th>ShortID</th>
+            <th>Redirect</th>
+            <th>Clicks</th>
+        </thead>
+
+        <tbody>
+<% urls.forEach((url, index) => { %>
+<tr>
+ <td><%= index+1 %></td>
+ <td><%= url.shortId %></td>
+ <td><%=url.redirectURL %></td>
+ <td><%= url.visitHistory.length %></td>
+</tr>
+<% }) %>
+        </tbody>
+     </table>
+    <% } %>
+</div>
+
+<script>
+    const fd=false;
+</script>
+<div>
+    <% if (true) { %>
+     <a href="/">All url</a>
+    <% } %>
+</div>
+</body>
+</html>
