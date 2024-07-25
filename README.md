@@ -38,13 +38,7 @@ The URL Shortener Application allows users to shorten long URLs, track analytics
     ```sh
     npm install
     ```
-4. Set up the environment variables in a `.env` file:
-    ```plaintext
-    MONGODB_URI=mongodb://localhost:27017/url_shortener
-    PORT=8001
-    JWT_SECRET=your_jwt_secret
-    ```
-5. Start the application:
+4. Start the application:
     ```sh
     node index.js
     npm start
